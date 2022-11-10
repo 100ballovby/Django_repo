@@ -15,7 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from firstapp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', views.index, name='home'),
+    # при переходе на главную страницу сайта,
+    # будет вызвана функция index из файла firstapp/views.py
 ]
