@@ -10,7 +10,9 @@ def index(request):
     :param request: запрос на получение страницы от пользователя
     :return: текст из функци HttpResponse
     """
-    return HttpResponse('Hello! There is my site!')
+    context = {'title': 'Main page'}
+    return render(request, 'firstapp/index.html',
+                  context=context)
 
 
 def about(request):
