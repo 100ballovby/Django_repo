@@ -11,3 +11,11 @@ def index(request):
     :return: текст из функци HttpResponse
     """
     return HttpResponse('Hello! There is my site!')
+
+
+def about(request):
+    return HttpResponse('<h1>About page</h1>')
+
+
+def contacts(request):
+    return HttpResponse('<h1>Contacts</h1>')

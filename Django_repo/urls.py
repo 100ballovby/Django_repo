@@ -14,12 +14,9 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from firstapp import views
+from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.index, name='home'),
-    # при переходе на главную страницу сайта,
-    # будет вызвана функция index из файла firstapp/views.py
+    path('', include('firstapp.urls')),  # подключаю URL-адреса приложения к сайту
 ]
