@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpRequest, HttpResponse
+from .forms import UserForm
 # Create your views here.
 
 
@@ -10,7 +11,9 @@ def index(request):
     :param request: запрос на получение страницы от пользователя
     :return: текст из функци HttpResponse
     """
-    context = {'title': 'Main page'}
+    userform = UserForm()
+    context = {'title': 'Main page',
+               'form': userform}
     return render(request, 'firstapp/index.html',
                   context=context)
 
