@@ -11,11 +11,17 @@ def index(request):
     :param request: запрос на получение страницы от пользователя
     :return: текст из функци HttpResponse
     """
-    userform = UserForm()
-    context = {'title': 'Main page',
-               'form': userform}
-    return render(request, 'firstapp/index.html',
-                  context=context)
+    if request.method == 'POST':
+        name = request.POST.get('name')  # получаю инфу по имени поля
+        age = request.POST.get('age')
+        output = f'<h1>Client</h1><h2>Name - {name}</h2><h3>Age - {age}</h3>'
+        return HttpResponse(output)
+    else:
+        userform = UserForm(label_suffix='?')  # у каждой подписи в конце вместо : будет стоять ?
+        context = {'title': 'Main page',
+                   'form': userform}
+        return render(request, 'firstapp/index.html',
+                      context=context)
 
 
 def about(request):
