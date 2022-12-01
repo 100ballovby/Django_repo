@@ -19,4 +19,6 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('firstapp.urls')),  # подключаю URL-адреса приложения к сайту
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('user_home/', include('user.urls')),
 ]
