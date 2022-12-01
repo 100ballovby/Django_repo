@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'firstapp',  # название вашего нового приложения для сайта
     'user.apps.UserConfig',
+    'crispy_forms',  # приложение для бьютифизации форм
 ]
 
 MIDDLEWARE = [
@@ -125,3 +126,5 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'  # конфигурационная переменная для форм
+LOGIN_REDIRECT_URL = 'account'  # сюда перенаправляем пользователя после входа
+LOGOUT_REDIRECT_URL = 'login'  # при выходе из кабинета перенаправить на логин
