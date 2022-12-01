@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Welcome!</h1>
+    
+    <div class="container">
+        <a href="{% url 'sigun' %}" class="btn btn-success">Sign up</a>
+        <a href="{% url 'login' %}" class="btn btn-success">Login</a>
+    </div>
+{% endblock %}
