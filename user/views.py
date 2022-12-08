@@ -2,11 +2,13 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic.edit import CreateView
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
-def user_home(request):
-    return render(request, 'user/index.html')
+@login_required  # не позволяет зайти на страницу, пока не войдем в аккаунт
+def profile(request):
+    return render(request, 'user/profile.html')
 
 
 class SignUp(CreateView):
