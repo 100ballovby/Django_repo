@@ -11,8 +11,6 @@ from .forms import UpdateUserForm, UpdateProfileForm
 # Create your views here.
 @login_required  # не позволяет зайти на страницу, пока не войдем в аккаунт
 def profile(request):
-    user_form = UpdateUserForm(instance=request.user)
-    profile_form = UpdateProfileForm(instance=request.user.profile)
     if request.method == 'POST':
         user_form = UpdateUserForm(request.POST, instance=request.user)
         profile_form = UpdateProfileForm(request.POST, request.FILES,
@@ -20,8 +18,12 @@ def profile(request):
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
+            print('saved')
             messages.success(request, 'Profile is updated!')
-            return redirect(to='users-profile')
+            return redirect(to='account')
+    else:
+        user_form = UpdateUserForm(instance=request.user)
+        profile_form = UpdateProfileForm(instance=request.user.profile)
     return render(request, 'user/profile.html', {'user_form': user_form,
                                                  'profile_form': profile_form})
 

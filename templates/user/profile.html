@@ -3,7 +3,7 @@
 {% block content %}
     <h1>Welcome, {{ user.username }}!</h1>
     <div class="row my-3 p-3">
-        <img width="50px" src="{{ user.profile.avtar.url }}" alt="avatar" class="rounded-circle account-img">
+        <img src="{{ user.profile.avatar.url }}" alt="avatar" class="rounded-circle account-img">
     </div>
 
     {% if user_form.errors %}
@@ -25,13 +25,24 @@
             <div class="form-row">
                 <div class="col-md-5">
                     <div class="form-group">
+                        <label class="small mb-1">Username:</label>
                         {{ user_form.username }}
-                    </div>
-                    <div class="form-group">
+                        <label class="small mb-1">Email:</label>
                         {{ user_form.email }}
                     </div>
+                    <div class="form-group">
+                        <a href="#" class="small">Change password</a>
+                        <hr>
+                        <label class="small mb-1">Change avatar:</label>
+                        {{ profile_form.avatar }}
+                    </div>
+                    <label class="small mb-1">Bio:</label>
+                    {{ profile_form.bio }}
                 </div>
             </div>
+            <br>
+            <button type="submit" class="btn btn-success btn-lg" title="Save info">Save</button>
+            <button type="reset" class="btn btn-danger btn-lg">Reset</button>
         </form>
     </div>
 {% endblock %}
